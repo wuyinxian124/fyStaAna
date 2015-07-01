@@ -53,19 +53,17 @@ public class AppTest extends TestCase {
 	}
 	public void testdmd(){
 		int lala = 0;
-		for(int i = 0;i < 51;i++){
+		for(int i = 0;i <= 101;i++){
 			lala +=i;
 		}
 		System.out.println(lala);
-		System.out.println(lala/50);
+		System.out.println(lala/101);
 	}
 	public void testAvg(){
-		  Random randomno = new Random();
-	      
-		for(int i = 1;i < 101;i++){
-			
-			//long delayTime = randomno.nextInt( 2900 - 800) + 800;  
-			avgTime(i);
+		Random r = new Random();
+		for(int i = 1;i <= 101;i++){
+			long d = r.nextInt(110 - 100 + 1) + 100;
+			avgTime(d);
  
 		}
 		long sum = 0l;
@@ -73,29 +71,32 @@ public class AppTest extends TestCase {
 			System.out.println("avgTemp="+avgTemp[jj]);
 			 sum +=avgTemp[jj]; 
 		}
-//		System.out.println("sum="+sum);
-//		System.out.println("sum10Temp="+sum10Temp);
-		if(i!=0)
-//			System.out.println("sum10Temp////="+sum10Temp/i+" i="+i);
-//		System.out.println("sum//="+ sum/(j-1)+" j="+j);
-		System.out.println("----="+(sum10Temp/i+sum/(j-1))/2);
+		System.out.println("sum="+sum);
+		System.out.println("sum10Temp="+sum10Temp);
+		System.out.println("sum//="+ sum/j + " j="+j);
+		if(i!=0){
+			System.out.println("sum10Temp////="+sum10Temp/i+" i="+i);
+			System.out.println("----="+(sum10Temp/i+sum/j)/2);
+		}
+		else
+			System.out.println("---+-="+sum/j);
 	}
 	private int i = 0;
 	private int j = 0;
 	private long[] avgTemp = new long[10];
 	private long sum10Temp = 0l;
 	private void avgTime(long delayTime){
-		
+		i++;
 		if(i%50 == 0){
+			sum10Temp += delayTime;
 			avgTemp[j++] = sum10Temp/50;
 			i = 0;
 			sum10Temp = 0;
-//			System.out.println("avgTemp[j++]="+avgTemp[j-1]);
+			System.out.println("avgTemp[j++]="+avgTemp[j-1]+" j="+j);
 		}else{
-			
+			sum10Temp += delayTime;
 		}
-		sum10Temp += delayTime;
-		i++;
+		
 	}
 	public void testproduct(){
 		  Random randomno = new Random();
