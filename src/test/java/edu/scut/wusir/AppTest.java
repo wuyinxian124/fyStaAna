@@ -61,7 +61,7 @@ public class AppTest extends TestCase {
 	}
 	public void testAvg(){
 		Random r = new Random();
-		for(int i = 1;i <= 101;i++){
+		for(int i = 1;i < 101;i++){
 			long d = r.nextInt(110 - 100 + 1) + 100;
 			avgTime(d);
  

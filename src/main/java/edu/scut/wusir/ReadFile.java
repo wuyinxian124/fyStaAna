@@ -55,7 +55,7 @@ public class ReadFile {
 			br = new BufferedReader(new FileReader(filepath));
 
 			while ((curline = br.readLine()) != null) {
-				System.out.println(curline);
+				//System.out.println(curline);
 				switch (dealLine(curline)){
 				case 1:{
 					// 连接用户数目
@@ -88,21 +88,23 @@ public class ReadFile {
 			
 		} catch (IOException e) {
 			e.printStackTrace();
-		}finally{
-			if( i!= 0){
-				avgTemp[j] += sum10Temp/i;
-			}
-			
-		}
-		long sum = 0l;
-		for(int jj= 0;jj<=j;jj++){
-			 sum +=avgTemp[jj]; 
 		}
 	
-		sendMsgAVGDelay = sum/j;
+		long sum = 0l;
+		for(int jj= 0;jj<j;jj++){
+			sum +=avgTemp[jj]; 
+		}
+		if(i!=0){
+			sendMsgAVGDelay = (sum10Temp/i+sum/j)/2;
+		}
+		else
+			sendMsgAVGDelay = sum/j;
 		
-		System.out.println("连接总数" + conUserNum);
-		System.out.println("消息连接成功总数" + conSUserNum);
+		System.out.println("连接用户总数" + conUserNum);
+		System.out.println("成功连接用户总数" + conSUserNum);
+		System.out.println("互动室总数：10");
+		System.out.println("互动室成员数目：10");
+		System.out.println("发送周期：1条/3s" + ",持续时间: 10s");
 		System.out.println("消息发送总数"+ sendMsgNum);
 		System.out.println("消息发送成功总数" + sendSMsgNum);
 		System.out.println("消息发送最大延时" + sendMsgMaxDelay);
@@ -134,11 +136,13 @@ public class ReadFile {
 		return 0;
 	}
 	
+	private int ii = 0;
 	/**
 	 * 发送消息最大延时，最小延时和平均延时
 	 * @param content
 	 */
 	private void statistics(String content){
+
 		//String content = "WebsocketReceiveThread38 处理时间 15031 微妙";
 		int first = content.indexOf("处理时间");
 		int last = content.indexOf("微妙");
@@ -149,20 +153,30 @@ public class ReadFile {
 		}else if(time0<sendMsgMinDelay){
 			sendMsgMinDelay = time0;
 		}
+		if(ii == 0){
+			sendMsgMinDelay = time0;
+			ii++;
+		}
 		avgTime(time0);
 		
 	}
+
 	private int i = 0;
 	private int j = 0;
-	private long[] avgTemp = new long[10];
+	private long[] avgTemp = new long[100];
 	private long sum10Temp = 0l;
 	private void avgTime(long delayTime){
 		i++;
-		if(i%50 == 0){
-			avgTemp[j++] += sum10Temp/50;
+		if(i%100 == 0){
+			sum10Temp += delayTime;
+			avgTemp[j++] = sum10Temp/100;
 			i = 0;
+			sum10Temp = 0;
+			//System.out.println("avgTemp[j++]="+avgTemp[j-1]+" j="+j);
 		}else{
 			sum10Temp += delayTime;
 		}
+		
 	}
+
 }
