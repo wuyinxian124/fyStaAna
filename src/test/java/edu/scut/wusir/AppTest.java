@@ -1,5 +1,7 @@
 package edu.scut.wusir;
 
+import java.util.Random;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -49,6 +51,46 @@ public class AppTest extends TestCase {
 		long time0 = Long.parseLong(time_.trim());
 		System.out.println(time0);
 	}
+	public void testAvg(){
+		  Random randomno = new Random();
+	      
+		for(int i = 0;i < 100;i++){
+			
+			long delayTime = randomno.nextInt( 2900 - 800) + 800;  
+			avgTime(delayTime);
+
+		}
+		long sum = 0l;
+		for(int jj= 0;jj<=j;jj++){
+			 sum +=avgTemp[jj]; 
+		}
+	
+		System.out.println( sum/j);
+	}
+	
+	public void testproduct(){
+		  Random randomno = new Random();
+	      
+		for(int i = 0;i < 10;i++){
+			
+			long delayTime = randomno.nextInt( 2900 - 800) + 800;  
+			System.out.println(delayTime);
+		}
+	}
+	private int i = 0;
+	private int j = 0;
+	private long[] avgTemp = new long[10];
+	private long sum10Temp = 0l;
+	private void avgTime(long delayTime){
+		i++;
+		if(i%50 == 0){
+			avgTemp[j++] += sum10Temp/50;
+			i = 0;
+		}else{
+			sum10Temp += delayTime;
+		}
+	}
+	
 	public   void grading(char grade) {
 
 		int success;
