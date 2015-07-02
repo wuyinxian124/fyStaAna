@@ -23,6 +23,7 @@ public class StartMain {
 	
 	private void beginOp(){
 
+		// 测试路径 /home/wusir/project/git/github/fysocketMultiTest
     	String filePath = "./";
     	File f = null;  
     	f = new File(filePath);  
