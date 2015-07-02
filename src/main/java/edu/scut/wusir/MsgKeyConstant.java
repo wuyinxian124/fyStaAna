@@ -16,7 +16,7 @@ public enum MsgKeyConstant {
 	/**
 	 * 消息发送成功总数目
 	 */
-	SendMsgSucNum("处理时间"),
+	SendMsgSucNum("消息延时时间"),
 	
 	/**
 	 * 发送消息总数目
