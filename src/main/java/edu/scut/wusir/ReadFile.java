@@ -119,9 +119,9 @@ public class ReadFile {
 		System.out.println(parameterSetting);
 		System.out.println("消息发送总数"+ sendMsgNum);
 		System.out.println("消息发送成功总数" + sendSMsgNum);
-		System.out.println("消息发送最大延时" + sendMsgMaxDelay);
-		System.out.println("消息发送平均延时" + sendMsgAVGDelay);
-		System.out.println("消息发送最小延时" + sendMsgMinDelay);
+		System.out.println("消息发送最大延时 " + (float)sendMsgMaxDelay/1000 + " 秒");
+		System.out.println("消息发送平均延时 " + (float)sendMsgAVGDelay/1000 + " 秒");
+		System.out.println("消息发送最小延时 " + (float)sendMsgMinDelay/1000 + " 秒");
 	}
 	
 	/**
@@ -163,10 +163,10 @@ public class ReadFile {
 	 */
 	private void statistics(String content){
 
-		//String content = "WebsocketReceiveThread38 处理时间 15031 微妙";
-		int first = content.indexOf("处理时间");
-		int last = content.indexOf("微妙");
-		String time_ = content.substring(first+4, last);
+		// String content = " WebsocketReceiveThread80 消息延时时间 15899 (毫秒)";
+		int first = content.indexOf("消息延时时间");
+		int last = content.indexOf("(毫秒)");
+		String time_ = content.substring(first+6, last);
 		long time0 = Long.parseLong(time_.trim());
 		if(time0>sendMsgMaxDelay){
 			sendMsgMaxDelay = time0;
