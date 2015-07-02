@@ -95,11 +95,17 @@ public class ReadFile {
 			sum +=avgTemp[jj]; 
 		}
 		if(i!=0){
-			sendMsgAVGDelay = (sum10Temp/i+sum/j)/2;
+			if(j!=0)
+				sendMsgAVGDelay = (sum10Temp/i+sum/j)/2;
+			else{
+				sendMsgAVGDelay = sum10Temp/i;
+			}
 		}
-		else
-			sendMsgAVGDelay = sum/j;
+		else{
 		
+			if(j!=0)
+				sendMsgAVGDelay = sum/j;
+		}
 		System.out.println("连接用户总数" + conUserNum);
 		System.out.println("成功连接用户总数" + conSUserNum);
 		System.out.println("互动室总数：10");
