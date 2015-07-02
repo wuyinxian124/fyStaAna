@@ -45,6 +45,11 @@ public class ReadFile {
 	 */
 	private long sendMsgMinDelay = 0;
 	
+	/**
+	 * 保存测试工具运行时的参数
+	 */
+	private String parameterSetting = "发送周期：1条/3s" + ",持续时间: 10s" ;
+	
 	public void start0(String filepath){
 
 
@@ -110,7 +115,8 @@ public class ReadFile {
 		System.out.println("成功连接用户总数" + conSUserNum);
 		System.out.println("互动室总数：10");
 		System.out.println("互动室成员数目：10");
-		System.out.println("发送周期：1条/3s" + ",持续时间: 10s");
+		//System.out.println("发送周期：1条/3s" + ",持续时间: 10s");
+		System.out.println(parameterSetting);
 		System.out.println("消息发送总数"+ sendMsgNum);
 		System.out.println("消息发送成功总数" + sendSMsgNum);
 		System.out.println("消息发送最大延时" + sendMsgMaxDelay);
@@ -138,6 +144,14 @@ public class ReadFile {
 			statistics(curline);
 			
 			return 4;
+		}else if(curline.contains(MsgKeyConstant.SettingParameters.getValue())){
+			/** 
+			 *  测试工具运行参数
+			 *   <br> 
+			 *   包括useid起始和终止值，发送次数和发送间隔
+			 */
+			
+			parameterSetting = curline ;
 		}
 		return 0;
 	}

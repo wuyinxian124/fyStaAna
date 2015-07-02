@@ -6,7 +6,12 @@ package edu.scut.wusir;
  **/
 public enum MsgKeyConstant {
 
-	
+	/**
+	 * 测试工具运行参数
+	 * <br>
+	 * 包括useid起始和终止值，发送次数和发送间隔
+	 */
+	SettingParameters("设置参数connectNum"),
 	
 	/**
 	 * 消息发送成功总数目
