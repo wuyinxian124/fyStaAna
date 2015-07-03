@@ -1,0 +1,14 @@
+#! /bin/bash
+# This is our first script
+echo 'begin Multi Test'
+echo "启动第一个"
+java -jar MultiTest.jar 0 100 3 10 "222.201.139.159" &
+echo "启动第二个"
+java -jar MultiTest.jar 100 200 3 10 "222.201.139.159" &
+echo "启动完成"
+#java -jar MultiTest.jar
+#while :
+#do
+#echo '000000'
+# test $SECONDS == 30 && exit 2
+#done
