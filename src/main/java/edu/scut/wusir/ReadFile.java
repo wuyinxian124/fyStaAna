@@ -130,7 +130,7 @@ public class ReadFile {
 	 * @return
 	 */
 	private int dealLine(String curline){
-		if(curline.contains(MsgKeyConstant.Handshake.getValue())){
+		if(curline.contains(MsgKeyConstant.SendVerifyNum.getValue())){
 			// 连接用户数目
 			return 1;
 		}else if(curline.contains(MsgKeyConstant.VerifySuc.getValue())){

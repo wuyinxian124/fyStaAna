@@ -28,6 +28,8 @@ public enum MsgKeyConstant {
 	 */
 	VerifySuc("onVerify : 验证成功"),
 	
+	SendVerifyNum("verify : 发送用户验证消息"),
+	
 	/**
 	 * 握手成功，表示用户已经连接消息系统服务器
 	 */
