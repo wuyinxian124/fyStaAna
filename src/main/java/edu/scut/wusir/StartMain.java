@@ -22,7 +22,9 @@ public class StartMain {
 	private void beginOp(){
 
 		// 测试路径 /home/wusir/project/git/github/fysocketMultiTest
-    	String filePath = "./";
+		//  /home/wusir/project/git/github/fysocketAPPClient
+		// /home/wusir/project/git/github/fysocketMultiTest
+    	String filePath = "/home/wusir/project/测试结果/";
     	File f = null;  
     	f = new File(filePath);  
     	File[] files = f.listFiles(); // 得到f文件夹下面的所有文件。  
